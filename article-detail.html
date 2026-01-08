@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深入理解CSS Grid布局 | 个人博客</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Code<span>Blog</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="blog-list.html">博客</a></li>
+                    <li><a href="portfolio.html">作品集</a></li>
+                    <li><a href="about.html">关于我</a></li>
+                    <li><a href="article-detail.html" class="active">文章示例</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 文章头部 -->
+    <section class="article-header">
+        <div class="container">
+            <div class="article-meta">
+                <span class="post-date"><i class="far fa-calendar"></i> 2023年10月15日</span>
+                <span class="post-category"><i class="far fa-folder"></i> 前端开发</span>
+                <span class="read-time"><i class="far fa-clock"></i> 阅读时间: 8分钟</span>
+                <span class="comment-count"><i class="far fa-comment"></i> 12条评论</span>
+            </div>
+            <h1 class="section-title">深入理解CSS Grid布局</h1>
+            <p class="article-subtitle">现代Web开发中最强大的布局系统完全指南</p>
+        </div>
+    </section>
+
+    <!-- 文章内容 -->
+    <article class="article-content">
+        <div class="article-body">
+            <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="CSS Grid布局示意图">
+                <p class="image-caption">CSS Grid布局示意图 - 现代Web设计的强大工具</p>
+            </div>
+            
+            <p>在过去的几年里，CSS Grid布局已经彻底改变了我们构建Web布局的方式。作为现代CSS中最强大的布局系统，它为我们提供了一种二维布局的方法，使我们能够轻松创建复杂、响应式的设计。</p>
+            
+            <h2>什么是CSS Grid布局？</h2>
+            <p>CSS Grid布局是一个二维布局系统，这意味着它可以同时处理行和列。这与Flexbox（一维布局系统）形成鲜明对比，Flexbox只能处理单个轴（行或列）的布局。</p>
+            
+            <p>Grid布局的核心思想是将容器划分为"网格"，然后可以将子元素放置在这些网格的任意位置。这使得创建复杂的布局变得非常简单和直观。</p>
+            
+            <h2>基本概念</h2>
+            <p>在开始使用Grid之前，理解一些基本概念非常重要：</p>
+            
+            <h3>1. Grid容器</h3>
+            <p>通过将元素的<code>display</code>属性设置为<code>grid</code>或<code>inline-grid</code>，可以将其定义为Grid容器。</p>
+            
+            <pre><code class="css">.container {
+    display: grid;
+}</code></pre>
+            
+            <h3>2. Grid项目</h3>
+            <p>Grid容器的直接子元素自动成为Grid项目。</p>
+            
+            <h3>3. Grid线</h3>
+            <p>Grid线是划分网格的线，包括水平线和垂直线。它们从1开始编号（也可以从-1开始反向编号）。</p>
+            
+            <h3>4. Grid轨道</h3>
+            <p>Grid轨道是两条相邻Grid线之间的空间，可以是行（水平轨道）或列（垂直轨道）。</p>
+            
+            <h3>5. Grid单元格</h3>
+            <p>Grid单元格是四条Grid线包围的最小单位，就像Excel表格中的一个单元格。</p>
+            
+            <h3>6. Grid区域</h3>
+            <p>Grid区域是由四条Grid线包围的任意矩形区域，可以包含一个或多个单元格。</p>
+            
+            <h2>创建基本网格</h2>
+            <p>让我们创建一个简单的3x3网格：</p>
+            
+            <pre><code class="css">.grid-container {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    gap: 10px;
+}</code></pre>
+            
+            <p>在这个例子中：</p>
+            <ul>
+                <li><code>grid-template-columns</code>定义了3列，每列100px宽</li>
+                <li><code>grid-template-rows</code>定义了3行，每行100px高</li>
+                <li><code>gap</code>设置了网格项之间的间距为10px</li>
+            </ul>
+            
+            <div class="code-example">
+                <h3>示例：创建响应式网格</h3>
+                <p>使用<code>repeat()</code>函数和<code>minmax()</code>函数可以创建响应式网格：</p>
+                
+                <pre><code class="css">.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}</code></pre>
+                
+                <p>这个代码会创建尽可能多的列，每列最小250px，最大1fr（剩余空间的一部分），当空间不够时自动换行。</p>
+            </div>
+            
+            <h2>网格项目定位</h2>
+            <p>在Grid中，有多种方式可以定位网格项目：</p>
+            
+            <h3>1. 使用行线和列线</h3>
+            <pre><code class="css">.grid-item {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+/* 简写形式 */
+.grid-item {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+/* 另一种简写 */
+.grid-item {
+    grid-area: 1 / 1 / 3 / 3;
+}</code></pre>
+            
+            <h3>2. 使用命名区域</h3>
+            <p>Grid允许我们为区域命名，使布局更加语义化：</p>
+            
+            <pre><code class="css">.container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar content content"
+        "footer footer footer";
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.footer { grid-area: footer; }</code></pre>
+            
+            <h2>高级Grid特性</h2>
+            
+            <h3>1. 隐式网格 vs 显式网格</h3>
+            <p>显式网格是通过<code>grid-template-columns</code>和<code>grid-template-rows</code>定义的网格。隐式网格是当项目被放置在显式网格之外时自动创建的额外网格轨道。</p>
+            
+            <pre><code class="css">.container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(2, 100px);
+    grid-auto-rows: 150px; /* 隐式行的高度 */
+    grid-auto-columns: 80px; /* 隐式列的宽度 */
+}</code></pre>
+            
+            <h3>2. 对齐方式</h3>
+            <p>Grid提供了强大的对齐控制：</p>
+            
+            <pre><code class="css">.container {
+    /* 容器内项目的对齐 */
+    justify-items: center; /* 水平对齐 */
+    align-items: center;    /* 垂直对齐 */
+    place-items: center center; /* 简写 */
+    
+    /* 整个网格在容器内的对齐 */
+    justify-content: center;
+    align-content: center;
+    place-content: center center;
+}
+
+.grid-item {
+    /* 单个项目的自对齐 */
+    justify-self: start;
+    align-self: end;
+    place-self: start end;
+}</code></pre>
+            
+            <h2>实际应用示例</h2>
+            
+            <h3>创建博客布局</h3>
+            <pre><code class="html">&lt;div class="blog-layout"&gt;
+    &lt;header class="header"&gt;网站头部&lt;/header&gt;
+    &lt;aside class="sidebar"&gt;侧边栏&lt;/aside&gt;
+    &lt;main class="content"&gt;主要内容&lt;/main&gt;
+    &lt;footer class="footer"&gt;页脚&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+            
+            <pre><code class="css">.blog-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar content"
+        "footer footer";
+    min-height: 100vh;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .blog-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "content"
+            "sidebar"
+            "footer";
+    }
+}</code></pre>
+            
+            <h2>Grid与Flexbox的比较</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>特性</th>
+                        <th>CSS Grid</th>
+                        <th>Flexbox</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>维度</td>
+                        <td>二维（行和列）</td>
+                        <td>一维（行或列）</td>
+                    </tr>
+                    <tr>
+                        <td>内容流向</td>
+                        <td>可以显式控制</td>
+                        <td>跟随主轴方向</td>
+                    </tr>
+                    <tr>
+                        <td>项目定位</td>
+                        <td>通过行/列线精确定位</td>
+                        <td>通过order属性调整顺序</td>
+                    </tr>
+                    <tr>
+                        <td>最适合</td>
+                        <td>整体页面布局</td>
+                        <td>组件内部布局</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>浏览器支持与最佳实践</h2>
+            <p>CSS Grid在现代浏览器中得到了广泛支持（IE11部分支持）。以下是使用Grid的一些最佳实践：</p>
+            
+            <ol>
+                <li>使用<code>@supports</code>进行特性检测</li>
+                <li>为不支持Grid的浏览器提供回退方案</li>
+                <li>结合Flexbox使用 - Grid用于整体布局，Flexbox用于组件内部布局</li>
+                <li>使用命名区域使代码更易读</li>
+                <li>充分利用Grid的响应式特性</li>
+            </ol>
+            
+            <div class="tip-box">
+                <h3><i class="fas fa-lightbulb"></i> 实用技巧</h3>
+                <p>使用<code>fr</code>单位可以创建灵活的网格布局，它会根据可用空间按比例分配空间。</p>
+                <p>使用<code>minmax()</code>函数可以设置网格轨道的最小和最大尺寸，这在创建响应式布局时非常有用。</p>
+            </div>
+            
+            <h2>总结</h2>
+            <p>CSS Grid布局是现代Web开发中不可或缺的工具。它提供了强大的二维布局能力，使我们能够创建复杂、响应式的设计，而无需依赖框架或复杂的CSS技巧。</p>
+            
+            <p>虽然Grid的学习曲线可能比Flexbox稍陡，但一旦掌握，它会极大地提高你的布局能力。我建议从简单的网格开始，逐步尝试更复杂的布局模式。</p>
+            
+            <p>记住，Grid和Flexbox并不是竞争关系，而是互补的。在实际项目中，我经常同时使用两者 - Grid用于整体页面布局，Flexbox用于组件内部布局。</p>
+            
+            <blockquote>
+                <p>"CSS Grid不是要取代Flexbox，而是要与它一起工作。Grid用于二维布局，Flexbox用于一维布局。" - Rachel Andrew</p>
+            </blockquote>
+            
+            <p>希望这篇文章能帮助你更好地理解和使用CSS Grid布局。如果你有任何问题或想法，欢迎在评论区分享！</p>
+        </div>
+        
+        <!-- 文章标签 -->
+        <div class="article-tags">
+            <span class="tag">CSS</span>
+            <span class="tag">Grid布局</span>
+            <span class="tag">前端开发</span>
+            <span class="tag">响应式设计</span>
+            <span class="tag">Web布局</span>
+        </div>
+        
+        <!-- 文章导航 -->
+        <div class="article-navigation">
+            <a href="#" class="nav-link prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>上一篇文章：ES2023新特性完全指南</span>
+            </a>
+            <a href="#" class="nav-link next">
+                <span>下一篇文章：移动优先的响应式设计策略</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <!-- 分享按钮 -->
+        <div class="share-buttons">
+            <h3>分享这篇文章</h3>
+            <div class="share-links">
+                <a href="#" class="share-btn weibo"><i class="fab fa-weibo"></i> 微博</a>
+                <a href="#" class="share-btn wechat"><i class="fab fa-weixin"></i> 微信</a>
+                <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#" class="share-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+        
+        <!-- 评论区 -->
+        <section class="comments-section">
+            <h2 class="section-title">评论 (12)</h2>
+            
+            <!-- 评论表单 -->
+            <div class="comment-form">
+                <h3>发表评论</h3>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="name">姓名 *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="email">邮箱 *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">评论 *</label>
+                        <textarea id="comment" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">提交评论</button>
+                </form>
+            </div>
+            
+            <!-- 评论列表 -->
+            <ul class="comment-list">
+                <!-- 评论1 -->
+                <li class="comment-item">
+                    <div class="comment-header">
+                        <div class="comment-author">
+                            <img src="34a7954ec7f2f17157742195f6ad3ffc.jpg">
+                            <div>
+                                <strong>秦浩</strong>
+                                <span class="comment-badge">前端开发者</span>
+                            </div>
+                        </div>
+                        <div class="comment-date">2023年10月16日</div>
+                    </div>
+                    <div class="comment-body">
+                        <p>非常详细的Grid教程！我一直对Grid的隐式网格和显式网格概念有些困惑，这篇文章解释得很清楚。特别是实际应用示例部分，对我正在做的项目很有帮助。</p>
+                    </div>
+                    <a href="#" class="comment-reply">回复</a>
+                </li>
+                
+                <!-- 评论2 -->
+                <li class="comment-item">
+                    <div class="comment-header">
+                        <div class="comment-author">
+                            <img src="34a7954ec7f2f17157742195f6ad3ffc.jpg">
+                            <div>
+                                <strong>秦浩</strong>
+                                <span class="comment-badge">UI设计师</span>
+                            </div>
+                        </div>
+                        <div class="comment-date">2023年10月17日</div>
+                    </div>
+                    <div class="comment-body">
+                        <p>作为一个设计师，我经常需要和开发人员沟通布局实现。这篇文章让我更好地理解了Grid布局的能力，以后在设计时可以考虑更多Grid的可能性！表格对比Grid和Flexbox的部分特别有用。</p>
+                    </div>
+                    <a href="#" class="comment-reply">回复</a>
+                </li>
+                
+                <!-- 评论3 -->
+                <li class="comment-item">
+                    <div class="comment-header">
+                        <div class="comment-author">
+                            <img src="34a7954ec7f2f17157742195f6ad3ffc.jpg ">
+                            <div>
+                                <strong>秦浩</strong>
+                                <span class="comment-badge">全栈开发者</span>
+                            </div>
+                        </div>
+                        <div class="comment-date">2023年10月18日</div>
+                    </div>
+                    <div class="comment-body">
+                        <p>感谢分享！我一直在找关于Grid命名区域的详细教程。实际项目中，命名区域确实能让代码更易维护。想问一下，在大型项目中，你如何组织Grid的CSS代码？</p>
+                    </div>
+                    <a href="#" class="comment-reply">回复</a>
+                </li>
+            </ul>
+        </section>
+    </article>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Code<span>Blog</span></a>
+                    <p>一个分享编程知识、技术心得与生活感悟的个人博客。记录成长，分享知识，连接志同道合的朋友。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="blog-list.html">博客文章</a></li>
+                        <li><a href="portfolio.html">作品集</a></li>
+                        <li><a href="about.html">关于我</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>订阅更新</h4>
+                    <p>订阅获取最新文章和技术分享</p>
+                    <form>
+                        <input type="email" placeholder="输入您的邮箱" class="form-control">
+                        <button type="submit" class="btn btn-accent">订阅</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CodeBlog. 保留所有权利。 | 设计：李小明</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 文章详情页特定样式 -->
+    <style>
+        img{
+            width:500px;
+        }
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-color);
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        .featured-image {
+            margin: 2rem 0 3rem;
+            text-align: center;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .image-caption {
+            text-align: center;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .article-body h2 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--secondary-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .article-body h3 {
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem;
+            color: var(--dark-color);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .article-body li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--gray-color);
+            background-color: rgba(247, 37, 133, 0.05);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .article-body pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .article-body code {
+            background-color: rgba(67, 97, 238, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+        
+        .article-body pre code {
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+        }
+        
+        .code-example {
+            background-color: rgba(67, 97, 238, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+        
+        .comparison-table tr:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+        
+        .tip-box {
+            background-color: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip-box h3 {
+            color: #d39e00;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 3rem 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .article-tags .tag {
+            padding: 8px 16px;
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+            border-radius: 20px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .article-tags .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .share-buttons {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background-color: rgba(67, 97, 238, 0.05);
+            border-radius: 10px;
+        }
+        
+        .share-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 10px 20px;
+            background-color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .share-btn.weibo { color: #e6162d; }
+        .share-btn.wechat { color: #07c160; }
+        .share-btn.twitter { color: #1da1f2; }
+        .share-btn.linkedin { color: #0077b5; }
+        
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        
+        .comment-badge {
+            display: inline-block;
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        
+        .comment-body {
+            margin: 1rem 0;
+        }
+        
+        .comment-reply {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .comment-reply:hover {
+            color: var(--accent-color);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group.half {
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-group.half {
+                width: 100%;
+            }
+            
+            .share-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .share-btn {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <script>
+        // 移动端导航切换
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // 代码高亮（简单模拟）
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeBlocks = document.querySelectorAll('pre code');
+            codeBlocks.forEach(block => {
+                // 简单的代码高亮模拟
+                const html = block.innerHTML;
+                // 这里可以添加更复杂的代码高亮逻辑
+                // 为了简化，我们只做基础的样式处理
+                block.innerHTML = html
+                    .replace(/\.([a-zA-Z-]+)/g, '<span class="code-class">.$1</span>')
+                    .replace(/([a-zA-Z-]+)\s*{/g, '<span class="code-selector">$1</span> {')
+                    .replace(/:/g, '<span class="code-colon">:</span>')
+                    .replace(/;/g, '<span class="code-semicolon">;</span>');
+            });
+        });
+    </script>
+</body>
+</html>

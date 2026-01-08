@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客文章 | 个人博客</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Code<span>Blog</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="blog-list.html" class="active">博客</a></li>
+                    <li><a href="portfolio.html">作品集</a></li>
+                    <li><a href="about.html">关于我</a></li>
+                    <li><a href="article-detail.html">文章示例</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 博客头部 -->
+    <section class="blog-header">
+        <div class="container">
+            <h1 class="section-title">博客文章</h1>
+            <p class="blog-description">这里收录了我所有的技术文章、学习笔记和生活感悟。每一篇文章都是我学习与思考的结晶，希望能够为你带来启发。</p>
+        </div>
+    </section>
+
+    <!-- 筛选按钮 -->
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="frontend">前端开发</button>
+            <button class="filter-btn" data-filter="javascript">JavaScript</button>
+            <button class="filter-btn" data-filter="design">设计与UX</button>
+            <button class="filter-btn" data-filter="backend">后端开发</button>
+            <button class="filter-btn" data-filter="life">生活随笔</button>
+        </div>
+    </div>
+
+    <!-- 博客内容区 -->
+    <div class="container">
+        <div class="blog-layout">
+            <!-- 文章列表 -->
+            <main class="blog-main">
+                <div class="posts-grid">
+                    <!-- 文章1 -->
+                    <article class="post-card" data-category="frontend">
+                        <div class="post-image">
+                           <img src="https://atts.w3cschool.cn/attachments/image/20230802/1690959415146265.png" alt="前端是干什么的？解析前端开发的核心职责和实际应用 | w3cschool笔记" class="" tabindex="0" aria-label="前端是干什么的？解析前端开发的核心职责和实际应用 | w3cschool笔记" role="button">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date">2023年10月15日</span>
+                                <span class="post-tag">前端开发</span>
+                            </div>
+                            <h3><a href="article-detail.html">深入理解CSS Grid布局</a></h3>
+                            <p>CSS Grid布局是现代Web开发中最强大的布局系统之一。本文将深入探讨Grid的核心概念、实用技巧以及响应式设计中的应用。</p>
+                            <a href="article-detail.html" class="read-more">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <!-- 文章2 -->
+                    <article class="post-card" data-category="javascript">
+                        <div class="post-image">
+                           <img src="https://www.easemob.com/data/upload/ueditor/20230131/63d88ccb404a4.png" alt="JavaScript 新特性最全指南：ES2023 ～ ES2016 - 环信" class="" tabindex="0" aria-label="JavaScript 新特性最全指南：ES2023 ～ ES2016 - 环信" role="button" data-bm="5">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date">2023年9月28日</span>
+                                <span class="post-tag">JavaScript</span>
+                            </div>
+                            <h3><a href="#">ES2023新特性完全指南</a></h3>
+                            <p>ECMAScript 2023带来了许多令人兴奋的新特性。本文将详细介绍这些新功能，并通过实际示例展示如何在项目中应用它们。</p>
+                            <a href="#" class="read-more">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <!-- 文章3 -->
+                    <article class="post-card" data-category="design">
+                        <div class="post-image">
+                            <img src="https://picx.zhimg.com/v2-8b7480c1a13f2e93a692f5d0593cc3f5_r.jpg" alt="UI 设计师必懂的响应式原理：从移动优先到全屏适配的全流程指南 - 知乎" class="" tabindex="0" aria-label="UI 设计师必懂的响应式原理：从移动优先到全屏适配的全流程指南 - 知乎" role="button">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date">2023年9月10日</span>
+                                <span class="post-tag">响应式设计</span>
+                            </div>
+                            <h3><a href="#">移动优先的响应式设计策略</a></h3>
+                            <p>在移动设备使用量日益增长的今天，移动优先的设计策略变得至关重要。本文将分享构建优秀响应式网站的最佳实践。</p>
+                            <a href="#" class="read-more">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <!-- 文章4 -->
+                    <article class="post-card" data-category="backend">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="文章封面">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date">2023年8月22日</span>
+                                <span class="post-tag">Node.js</span>
+                            </div>
+                            <h3><a href="#">使用Node.js构建高性能REST API</a></h3>
+                            <p>REST API是现代Web应用的核心。本文将介绍如何使用Node.js和Express框架构建高性能、可扩展的RESTful API。</p>
+                            <a href="#" class="read-more">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <!-- 文章5 -->
+                    <article class="post-card" data-category="life">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="文章封面">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date">2023年8月5日</span>
+                                <span class="post-tag">生活随笔</span>
+                            </div>
+                            <h3><a href="#">我的2023年学习计划与目标</a></h3>
+                            <p>新的一年，新的开始。在这篇文章中，我将分享2023年的学习计划、职业目标以及对个人成长的思考。</p>
+                            <a href="#" class="read-more">阅读全文</a>
+                        </div>
+                    </article>
+                    
+                    <!-- 文章6 -->
+                    <article class="post-card" data-category="frontend">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="文章封面">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date">2023年7月18日</span>
+                                <span class="post-tag">React</span>
+                            </div>
+                            <h3><a href="#">React Hooks最佳实践指南</a></h3>
+                            <p>React Hooks彻底改变了我们在React中编写组件的方式。本文将分享使用Hooks的最佳实践和常见陷阱。</p>
+                            <a href="#" class="read-more">阅读全文</a>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- 分页 -->
+                <div class="pagination">
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link">4</a>
+                    <a href="#" class="page-link">5</a>
+                    <a href="#" class="page-link">»</a>
+                </div>
+            </main>
+            
+            <!-- 侧边栏 -->
+            <aside class="blog-sidebar">
+                <div class="sidebar-widget">
+                    <h3>文章分类</h3>
+                    <ul class="category-list">
+                        <li><a href="#" data-filter="frontend">前端开发 <span class="category-count">12</span></a></li>
+                        <li><a href="#" data-filter="javascript">JavaScript <span class="category-count">8</span></a></li>
+                        <li><a href="#" data-filter="design">设计与UX <span class="category-count">6</span></a></li>
+                        <li><a href="#" data-filter="backend">后端开发 <span class="category-count">5</span></a></li>
+                        <li><a href="#" data-filter="life">生活随笔 <span class="category-count">4</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>热门文章</h3>
+                    <ul class="popular-posts">
+                        <li><a href="#">深入理解CSS Grid布局</a></li>
+                        <li><a href="#">ES2023新特性完全指南</a></li>
+                        <li><a href="#">移动优先的响应式设计策略</a></li>
+                        <li><a href="#">React Hooks最佳实践指南</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>标签云</h3>
+                    <div class="tags-cloud">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Node.js</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Code<span>Blog</span></a>
+                    <p>一个分享编程知识、技术心得与生活感悟的个人博客。记录成长，分享知识，连接志同道合的朋友。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="blog-list.html">博客文章</a></li>
+                        <li><a href="portfolio.html">作品集</a></li>
+                        <li><a href="about.html">关于我</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>订阅更新</h4>
+                    <p>订阅获取最新文章和技术分享</p>
+                    <form>
+                        <input type="email" placeholder="输入您的邮箱" class="form-control">
+                        <button type="submit" class="btn btn-accent">订阅</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CodeBlog. 保留所有权利。 | 设计：李小明</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // --- 1. 移动端导航切换 (添加滑动动画) ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            // 切换 'active' 类来控制菜单的显示/隐藏
+            navLinks.classList.toggle('active');
+            // 可选：给汉堡图标加个旋转动画
+            this.classList.toggle('rotate');
+        });
+    }
+
+    // --- 2. 文章筛选功能 (绚丽的 Masonry 瀑布流效果) ---
+    document.querySelectorAll('.filter-btn, .category-list a').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 1. 更新按钮状态 (涟漪效果)
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // 2. 获取筛选值
+            const filter = this.dataset.filter || this.getAttribute('data-filter');
+
+            // 3. 获取所有卡片
+            const cards = document.querySelectorAll('.post-card');
+
+            cards.forEach((card, index) => {
+                // 为每个卡片计算延迟，制造逐个动画的错落感
+                const delay = `${index * 0.05}s`;
+
+                if (filter === 'all' || card.dataset.category === filter) {
+                    // --- 炫酷登场：卡片从下方滑入并放大 ---
+                    card.style.setProperty('--anim-delay', delay);
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px) scale(0.95)';
+                    
+                    // 强制重绘，确保动画触发
+                    void card.offsetWidth;
+                    
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0) scale(1)';
+                } else {
+                    // --- 炫酷离场：卡片缩小并模糊消失 ---
+                    card.style.setProperty('--anim-delay', delay);
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    card.style.filter = 'blur(5px)';
+                    
+                    // 离场动画结束后再隐藏元素
+                    card.addEventListener('transitionend', function handler() {
+                        if (card.style.opacity === '0') {
+                            card.style.display = 'none';
+                            card.removeEventListener('transitionend', handler);
+                        }
+                    }, { once: true });
+                }
+            });
+        });
+    });
+
+    // --- 3. 页面加载完成后的初始动画 ---
+    // 让页面刚打开时，文章卡片有一个“飘落”的入场效果
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.post-card');
+        cards.forEach((card, index) => {
+            // 设置初始状态（在屏幕上方看不见的地方）
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(-20px)';
+            
+            // 设置每个卡片的延迟时间
+            card.style.transitionDelay = `${index * 0.1}s`;
+            
+            // 触发浏览器重绘，然后应用最终状态
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 50);
+        });
+    });
+    
+</script>
+
+</body>
+</html>
